@@ -30,7 +30,18 @@ public class SimpleSourceDestinationMapperIntegrationTest {
 
         assertThat(destination.getName()).isEqualTo(simpleSource.getName());
         assertThat(destination.getDescription()).isEqualTo(simpleSource.getDescription());
+    }
 
+    @Test
+    public void givenSimpleDestinationToSourceDestination_whenMaps_thenCorrect() {
+        SimpleDestination destination = new SimpleDestination();
+        destination.setName("DestinationName");
+        destination.setDescription("DestinationDescription");
+
+        SimpleSource source = simpleSourceDestinationMapper.destinationToSource(destination);
+
+        assertThat(destination.getName()).isEqualTo(source.getName());
+        assertThat(destination.getDescription()).isEqualTo(source.getDescription());
     }
 
 }
